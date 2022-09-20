@@ -16,7 +16,7 @@ export default defineConfig(({ command }) => {
         : {
             DEBUG: true
           },
-    base: '/cat-money-1/',
+    base: './',
     build: {
       rollupOptions: {
         output: {

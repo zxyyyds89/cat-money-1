@@ -8,7 +8,7 @@ const pushMap: Record<string, string> = {
   'Welcome1': '/welcome/2',
   'Welcome2': '/welcome/3',
   'Welcome3': '/welcome/4',
-  'Welcome4': '/start',
+  'Welcome4': '/items',
 }
 export const Welcome = defineComponent({
   setup: (props, context) => {
@@ -28,9 +28,9 @@ export const Welcome = defineComponent({
     return () => <div class={s.wrapper}>
       <header>
         <svg>
-          <use xlinkHref='#mangosteen'></use>
+          <use xlinkHref='#cat'></use>
         </svg>
-        <h1>山竹记账</h1>
+        <h1>猫咪记账</h1>
       </header>
       <main class={s.main} ref={main}>
         <RouterView name="main">
@@ -48,3 +48,5 @@ export const Welcome = defineComponent({
     </div>
   }
 })
+
+export default Welcome

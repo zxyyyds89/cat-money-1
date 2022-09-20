@@ -3,8 +3,7 @@
 ## 部署
 
 ```bash
-pnpm run build --base /
-bin/coscli-linux cp -r dist cos://mangosteen-test-3-1305090081
+pnpm run build --base
 ```
 
 ## 编码规范

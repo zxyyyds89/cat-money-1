@@ -1,33 +1,37 @@
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import styleImport, { VantResolve } from 'vite-plugin-style-import';
+import styleImport, { VantResolve } from 'vite-plugin-style-import'
 // @ts-nocheck
-import { svgstore } from './src/vite_plugins/svgstore';
+import { svgstore } from './src/vite_plugins/svgstore'
 
 // https://vitejs.dev/config/
-export default defineConfig(({command}) => {
+export default defineConfig(({ command }) => {
   return {
-    define: command === 'build' ? {
-      DEBUG: false
-    } : {
-      DEBUG: true
-    },
+    define:
+      command === 'build'
+        ? {
+            DEBUG: false
+          }
+        : {
+            DEBUG: true
+          },
+    base: './',
     build: {
       rollupOptions: {
         output: {
           manualChunks(id: any) {
             if (id.includes('echarts')) {
-              return 'echarts';
+              return 'echarts'
             }
             if (id.includes('mock') || id.includes('faker')) {
-              return 'mock';
+              return 'mock'
             }
             if (id.includes('vant')) {
-              return 'vant';
+              return 'vant'
             }
             if (id.includes('node_modules')) {
-              return 'vendor';
+              return 'vendor'
             }
           }
         }
@@ -41,13 +45,13 @@ export default defineConfig(({command}) => {
       }),
       svgstore(),
       styleImport({
-        resolves: [VantResolve()],
-      }),
+        resolves: [VantResolve()]
+      })
     ],
     server: {
       proxy: {
         '/api/v1': {
-          target: 'http://121.196.236.94:3000/',
+          target: 'http://121.196.236.94:3000/'
         }
       }
     }
